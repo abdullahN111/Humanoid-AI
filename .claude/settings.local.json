@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pwsh -Command \"& ''.specify/scripts/powershell/create-new-feature.ps1'' -Number 1 -ShortName ''ros2-nervous-system'' -FeatureDescription ''Module 1: The Robotic Nervous System \\(ROS 2\\)\n\nProject: Module 1 documentation for a Physical AI book \\(Docusaurus\\)\n\nTarget audience:\nSoftware engineers, AI developers, and robotics students transitioning from AI/agents to humanoid robotics\n\nModule focus:\nFoundational middleware concepts required to control humanoid robots using ROS 2 and Python-based AI agents\n\nChapters to build \\(3\\):\n\nIntroduction to ROS 2 as a Robotic Nervous System\n\nWhat ROS 2 is and why it is critical for Physical AI\n\nNodes, topics, services, and message passing\n\nComparison to traditional software architectures\n\nConnecting Python AI Agents to ROS 2\n\nUsing rclpy to build ROS 2 nodes in Python\n\nBridging AI/LLM agents with ROS controllers\n\nCommand flow from decision-making to actuation\n\nHumanoid Structure with URDF\n\nPurpose of URDF in humanoid robotics\n\nLinks, joints, and coordinate frames\n\nHow URDF enables simulation, control, and future AI reasoning''\")",
+      "Bash(git fetch --all --prune)",
+      "Bash(pwsh -Command \"& ''.specify/scripts/powershell/create-new-feature.ps1'' -Number 1 -ShortName ''ros2-nervous-system'' -FeatureDescription ''Module 1: The Robotic Nervous System \\(ROS 2\\)\n\nProject: Module 1 documentation for a Physical AI book \\(Docusaurus\\)\n\nTarget audience:\nSoftware engineers, AI developers, and robotics students transitioning from AI/agents to humanoid robotics\n\nModule focus:\nFoundational middleware concepts required to control humanoid robots using ROS 2 and Python-based AI agents\n\nChapters to build \\(3\\):\n\n1. Introduction to ROS 2 as a Robotic Nervous System\n\nWhat ROS 2 is and why it is critical for Physical AI\nNodes, topics, services, and message passing\nComparison to traditional software architectures\n\n2. Connecting Python AI Agents to ROS 2\n\nUsing rclpy to build ROS 2 nodes in Python\nBridging AI/LLM agents with ROS controllers\nCommand flow from decision-making to actuation\n\n3. Humanoid Structure with URDF\n\nPurpose of URDF in humanoid robotics\nLinks, joints, and coordinate frames\nHow URDF enables simulation, control, and future AI reasoning''\")",
+      "Bash(ls -la */specs/)",
+      "Bash(ls -la ../*/specs/)",
+      "Bash(mkdir:*)",
+      "Bash(dir \"C:\\\\Users\\\\uni-tech\\\\All Programming Code\\\\cli_agents\\\\hackathon\\\\history\\\\prompts\\\\ros2-nervous-system\"\")",
+      "Bash(.specify/scripts/powershell/setup-plan.ps1 -Json)",
+      "Bash(npx create-docusaurus@latest website classic --typescript false)",
+      "Bash(npx @docusaurus/core@latest init website classic)",
+      "Bash(npm init -y)",
+      "Bash(npm install @docusaurus/core@latest @docusaurus/preset-classic@latest)",
+      "Bash(.specify/scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks)",
+      "Bash(git rev-parse --git-dir)",
+      "Bash(npx create-docusaurus@latest website classic --force)",
+      "Bash(node --version)",
+      "Bash(npm --version)",
+      "Bash(npx create-docusaurus@latest website classic)",
+      "Bash(pkill -f node)"
+    ]
+  }
+}

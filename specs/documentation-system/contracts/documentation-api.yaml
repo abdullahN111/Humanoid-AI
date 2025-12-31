@@ -1,0 +1,151 @@
+# API Contract: Documentation System
+
+## Documentation Content API
+
+### Get Module List
+- **Endpoint**: `GET /api/modules`
+- **Description**: Retrieve a list of all available documentation modules
+- **Authentication**: None required (public endpoint)
+- **Response**:
+  ```json
+  {
+    "modules": [
+      {
+        "id": "module-1",
+        "title": "Getting Started",
+        "description": "Introduction to the system",
+        "chapters_count": 3,
+        "order": 1
+      }
+    ]
+  }
+  ```
+- **Error Responses**:
+  - `500`: Internal server error
+
+### Get Module Details
+- **Endpoint**: `GET /api/modules/{module_id}`
+- **Description**: Retrieve details about a specific module and its chapters
+- **Path Parameters**:
+  - `module_id`: ID of the module to retrieve
+- **Authentication**: None required (public endpoint)
+- **Response**:
+  ```json
+  {
+    "id": "module-1",
+    "title": "Getting Started",
+    "description": "Introduction to the system",
+    "chapters": [
+      {
+        "id": "chapter-1",
+        "title": "Installation",
+        "order": 1,
+        "path": "/docs/module-1/chapter-1"
+      }
+    ]
+  }
+  ```
+- **Error Responses**:
+  - `404`: Module not found
+  - `500`: Internal server error
+
+### Get Chapter Content
+- **Endpoint**: `GET /api/modules/{module_id}/chapters/{chapter_id}`
+- **Description**: Retrieve content of a specific chapter
+- **Path Parameters**:
+  - `module_id`: ID of the parent module
+  - `chapter_id`: ID of the chapter to retrieve
+- **Authentication**: None required (public endpoint)
+- **Response**:
+  ```json
+  {
+    "id": "chapter-1",
+    "title": "Installation",
+    "content": "# Installation Guide\n\nThis is the content...",
+    "module_id": "module-1",
+    "order": 1,
+    "metadata": {
+      "tags": ["installation", "setup"],
+      "created_date": "2025-12-25",
+      "updated_date": "2025-12-25"
+    }
+  }
+  ```
+- **Error Responses**:
+  - `404`: Module or chapter not found
+  - `500`: Internal server error
+
+### Search Documentation
+- **Endpoint**: `GET /api/search`
+- **Description**: Search across all documentation content
+- **Query Parameters**:
+  - `q`: Search query string
+  - `limit`: Maximum number of results (default: 10, max: 50)
+  - `module`: Filter by specific module ID (optional)
+- **Authentication**: None required (public endpoint)
+- **Response**:
+  ```json
+  {
+    "query": "installation",
+    "results": [
+      {
+        "id": "chapter-1",
+        "title": "Installation Guide",
+        "module_id": "module-1",
+        "module_title": "Getting Started",
+        "content_preview": "This is the content...",
+        "relevance_score": 0.95
+      }
+    ],
+    "total_count": 1
+  }
+  ```
+- **Error Responses**:
+  - `400`: Invalid query parameters
+  - `500`: Internal server error
+
+## RAG Integration API
+
+### Get Content for Indexing
+- **Endpoint**: `GET /api/rag/content`
+- **Description**: Retrieve documentation content in a format suitable for RAG indexing
+- **Query Parameters**:
+  - `module_id`: Filter by specific module (optional)
+  - `chapter_id`: Filter by specific chapter (optional)
+- **Authentication**: Required (admin access)
+- **Response**:
+  ```json
+  {
+    "content_chunks": [
+      {
+        "content_id": "chunk-1",
+        "module_id": "module-1",
+        "chapter_id": "chapter-1",
+        "content": "Full text content for indexing...",
+        "metadata": {
+          "title": "Installation Guide",
+          "headings": ["# Installation Guide", "## Prerequisites"],
+          "tags": ["installation", "setup"]
+        }
+      }
+    ]
+  }
+  ```
+- **Error Responses**:
+  - `401`: Unauthorized access
+  - `500`: Internal server error
+
+### Health Check
+- **Endpoint**: `GET /api/health`
+- **Description**: Check the health status of the documentation API
+- **Authentication**: None required
+- **Response**:
+  ```json
+  {
+    "status": "healthy",
+    "timestamp": "2025-12-25T10:00:00Z",
+    "version": "1.0.0"
+  }
+  ```
+- **Error Responses**:
+  - `503`: Service unhealthy
