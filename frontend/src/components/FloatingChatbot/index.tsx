@@ -1,0 +1,1 @@
+export { default as FloatingChatbot, FloatingChatbot as FloatingChatbotComponent } from './FloatingChatbot';

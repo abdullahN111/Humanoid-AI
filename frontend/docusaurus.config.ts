@@ -68,6 +68,32 @@ const config: Config = {
     ],
   ],
 
+  themes: [
+    // ... other themes
+  ],
+
+  plugins: [
+    // ... other plugins
+    // Plugin to inject environment variables
+    async function myPlugin(context, options) {
+      const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000';
+      return {
+        name: 'docusaurus-plugin-env-variables',
+        injectHtmlTags() {
+          return {
+            postBodyTags: [
+              `<script>
+                window.ENV = {
+                  API_BASE_URL: '${API_BASE_URL}'
+                };
+              </script>`,
+            ],
+          };
+        },
+      };
+    },
+  ],
+
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',

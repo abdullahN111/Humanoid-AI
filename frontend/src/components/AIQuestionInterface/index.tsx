@@ -1,0 +1,1 @@
+export { default as AIQuestionInterface, AIQuestionInterface as AIQuestionInterfaceComponent } from './AIQuestionInterface';
