@@ -13,12 +13,9 @@ interface FloatingChatbotProps {
 
 export const FloatingChatbot: React.FC<FloatingChatbotProps> = ({
   config = {
-    baseUrl: typeof window !== 'undefined' && window.ENV && window.ENV.API_BASE_URL
-      ? window.ENV.API_BASE_URL
-      : (typeof process !== 'undefined' && process.env
-        ? process.env.REACT_APP_AGENT_API_URL || 'http://localhost:8000'
-        : 'http://localhost:8000'),
-    timeout: 30000,
+    baseUrl: typeof window !== 'undefined'
+      ? (window as any).process?.env?.REACT_APP_API_BASE_URL
+      : undefined,
   },
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
