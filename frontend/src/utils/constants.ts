@@ -6,7 +6,7 @@ const getAPIBaseUrl = (): string => {
   if (typeof process !== 'undefined' && process.env) {
     return process.env.REACT_APP_API_BASE_URL
   }
-  return 'http://localhost:8000'; // default fallback
+  return
 };
 
 export const API_BASE_URL = getAPIBaseUrl();
