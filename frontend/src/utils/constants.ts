@@ -1,18 +1,20 @@
 // API endpoint constants
 // Docusaurus uses window.ENV for environment variables
 const getAPIBaseUrl = (): string => {
-
+  if (typeof window !== 'undefined' && (window as any).ENV && (window as any).ENV.API_BASE_URL) {
+    return (window as any).ENV.API_BASE_URL;
+  }
   // Fallback to environment variables if available during build time
   if (typeof process !== 'undefined' && process.env) {
-    return process.env.REACT_APP_API_BASE_URL as string
+    return process.env.REACT_APP_API_BASE_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000';
   }
-  return
+  return 'http://localhost:8000'; // default fallback
 };
 
 export const API_BASE_URL = getAPIBaseUrl();
 export const API_ENDPOINTS = {
-  QUERY: `${API_BASE_URL}/api/agent/query`,
-  HEALTH: `${API_BASE_URL}/health`,
+  QUERY: `${API_BASE_URL}/api/v1/chat/ask`,
+  HEALTH: `${API_BASE_URL}/api/health`,
 };
 
 // Configuration constants
