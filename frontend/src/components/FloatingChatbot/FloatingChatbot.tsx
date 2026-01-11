@@ -14,7 +14,7 @@ interface FloatingChatbotProps {
 export const FloatingChatbot: React.FC<FloatingChatbotProps> = ({
   config = {
     baseUrl: typeof window !== 'undefined'
-      ? (window as any).process?.env?.REACT_APP_AGENT_API_URL
+      ? (window as any).process?.env?.REACT_APP_API_BASE_URL
       : undefined,
   },
 }) => {

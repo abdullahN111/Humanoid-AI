@@ -3,10 +3,9 @@
 const getAPIBaseUrl = (): string => {
 
   // Fallback to environment variables if available during build time
-  if (typeof process !== 'undefined' && process.env) {
-    return process.env.REACT_APP_AGENT_API_URL
-  }
-  return
+ 
+    return process.env.REACT_APP_API_BASE_URL as string
+
 };
 
 export const API_BASE_URL = getAPIBaseUrl();
