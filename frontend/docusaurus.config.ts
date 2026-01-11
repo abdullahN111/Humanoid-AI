@@ -76,7 +76,7 @@ const config: Config = {
     // ... other plugins
     // Plugin to inject environment variables
     async function myPlugin(context, options) {
-      const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000';
+      const API_BASE_URL = process.env.REACT_APP_AGENT_API_URL
       return {
         name: 'docusaurus-plugin-env-variables',
         injectHtmlTags() {
