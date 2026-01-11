@@ -1,12 +1,10 @@
 // API endpoint constants
 // Docusaurus uses window.ENV for environment variables
 const getAPIBaseUrl = (): string => {
-  if (typeof window !== 'undefined' && (window as any).ENV && (window as any).ENV.API_BASE_URL) {
-    return (window as any).ENV.API_BASE_URL;
-  }
+
   // Fallback to environment variables if available during build time
   if (typeof process !== 'undefined' && process.env) {
-    return process.env.REACT_APP_API_BASE_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8000';
+    return process.env.REACT_APP_API_BASE_URL
   }
   return 'http://localhost:8000'; // default fallback
 };
